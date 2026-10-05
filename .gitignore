@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+/database/*.sqlite
+/backend/node_modules
+/backend/.env

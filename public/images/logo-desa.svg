@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Perisai Luar -->
+  <path d="M60 6C35 6 16 16 16 38C16 75 42 104 60 114C78 104 104 75 104 38C104 16 85 6 60 6Z" fill="#047857" stroke="#F59E0B" stroke-width="4" stroke-linejoin="round"/>
+  
+  <!-- Lapisan Dalam Putih -->
+  <path d="M60 12C38 12 22 21 22 40C22 72 45 97 60 106C75 97 98 72 98 40C98 21 82 12 60 12Z" fill="#FFFFFF"/>
+  
+  <!-- Pita Merah Putih Atas -->
+  <path d="M35 22H85C88 22 90 25 90 28V33H30V28C30 25 32 22 35 22Z" fill="#DC2626"/>
+  <path d="M30 33H90V38C90 41 88 43 85 43H35C32 43 30 41 30 38V33Z" fill="#F8FAFC"/>
+  
+  <!-- Lambang Bintang Emas Pusat -->
+  <path d="M60 42L63.5 50.5L72.5 51L65.5 56.5L68 65L60 60L52 65L54.5 56.5L47.5 51L56.5 50.5L60 42Z" fill="#F59E0B" stroke="#D97706" stroke-width="0.8"/>
+  
+  <!-- Lingkaran Sayap & Padi Kapas Kiri -->
+  <path d="M42 52C38 58 37 66 38 74C40 82 45 88 52 92" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="38" cy="56" r="2.5" fill="#F59E0B"/>
+  <circle cx="36" cy="64" r="2.5" fill="#F59E0B"/>
+  <circle cx="38" cy="72" r="2.5" fill="#F59E0B"/>
+  <circle cx="43" cy="80" r="2.5" fill="#F59E0B"/>
+  <circle cx="50" cy="87" r="2.5" fill="#F59E0B"/>
+  
+  <!-- Padi Kapas Kanan -->
+  <path d="M78 52C82 58 83 66 82 74C80 82 75 88 68 92" stroke="#10B981" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="82" cy="56" r="2.5" fill="#F59E0B"/>
+  <circle cx="84" cy="64" r="2.5" fill="#F59E0B"/>
+  <circle cx="82" cy="72" r="2.5" fill="#F59E0B"/>
+  <circle cx="77" cy="80" r="2.5" fill="#F59E0B"/>
+  <circle cx="70" cy="87" r="2.5" fill="#F59E0B"/>
+  
+  <!-- Simbol Rumah Adat / Gerbang Desa -->
+  <path d="M52 74L60 67L68 74V84H52V74Z" fill="#047857"/>
+  <rect x="57" y="77" width="6" height="7" fill="#FEF3C7"/>
+  
+  <!-- Pita Semboyan Bawah -->
+  <path d="M38 98C48 95 72 95 82 98L85 104C70 102 50 102 35 104L38 98Z" fill="#F59E0B"/>
+</svg>

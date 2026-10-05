@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment (RAHASIA - jangan di-commit)
+.env
+.env.*
+!.env.example
+
+# Upload privat
+storage/uploads/*
+!storage/uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal

@@ -1,0 +1,186 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  WARGA
+  ADMIN
+  KADES
+}
+
+enum AppStatus {
+  DRAFT
+  DIAJUKAN
+  PERLU_PERBAIKAN
+  MENUNGGU_PERSETUJUAN
+  DISETUJUI
+  DIPROSES
+  SELESAI
+  DITOLAK
+  DIBATALKAN
+}
+
+model Village {
+  id              String   @id @default(uuid())
+  code            String   @unique
+  name            String
+  district        String
+  regency         String
+  province        String   @default("Jawa Barat")
+  address         String
+  phone           String
+  email           String
+  official_head   String
+  official_nip    String
+  service_hours   String   @default("Senin - Jumat, 08.00 - 14.00 WIB")
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  users           User[]
+  residents       Resident[]
+  services        Service[]
+  applications    Application[]
+  settings        Setting[]
+}
+
+model User {
+  id              String   @id @default(uuid())
+  village_id      String
+  nik             String   @unique
+  name            String
+  email           String?  @unique
+  phone           String
+  password_hash   String
+  role            Role     @default(WARGA)
+  is_active       Boolean  @default(true)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  village         Village  @relation(fields: [village_id], references: [id], onDelete: Cascade)
+  resident        Resident?
+  applications    Application[]
+}
+
+model Resident {
+  id              String   @id @default(uuid())
+  village_id      String
+  user_id         String?  @unique
+  nik             String   @unique
+  family_card_no  String
+  full_name       String
+  birth_place     String
+  birth_date      DateTime
+  gender          String
+  address         String
+  rt              String
+  rw              String
+  religion        String   @default("Islam")
+  marital_status  String   @default("Kawin")
+  occupation      String   @default("Wiraswasta")
+  phone_number    String
+  is_verified     Boolean  @default(false)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  village         Village  @relation(fields: [village_id], references: [id], onDelete: Cascade)
+  user            User?    @relation(fields: [user_id], references: [id], onDelete: SetNull)
+  applications    Application[]
+}
+
+model Service {
+  id                String   @id @default(uuid())
+  village_id        String
+  code              String
+  name              String
+  category          String
+  description       String
+  estimation_days   Int      @default(1)
+  requires_approval Boolean  @default(true)
+  is_active         Boolean  @default(true)
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  village           Village  @relation(fields: [village_id], references: [id], onDelete: Cascade)
+  requirements      ServiceRequirement[]
+  applications      Application[]
+
+  @@unique([village_id, code])
+}
+
+model ServiceRequirement {
+  id           String   @id @default(uuid())
+  service_id   String
+  name         String
+  is_mandatory Boolean  @default(true)
+  created_at   DateTime @default(now())
+
+  service      Service  @relation(fields: [service_id], references: [id], onDelete: Cascade)
+}
+
+model Application {
+  id               String       @id @default(uuid())
+  village_id       String
+  user_id          String
+  resident_id      String?
+  service_id       String
+  tracking_number  String       @unique
+  purpose          String
+  business_name    String?
+  business_type    String?
+  business_address String?
+  status           AppStatus    @default(DIAJUKAN)
+  verifier_notes   String?
+  approval_notes   String?
+  letter_number    String?
+  qr_uuid          String?      @unique
+  created_at       DateTime     @default(now())
+  updated_at       DateTime     @updatedAt
+
+  village          Village      @relation(fields: [village_id], references: [id], onDelete: Cascade)
+  user             User         @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  resident         Resident?    @relation(fields: [resident_id], references: [id], onDelete: SetNull)
+  service          Service      @relation(fields: [service_id], references: [id], onDelete: Cascade)
+  documents        ApplicationDocument[]
+  histories        StatusHistory[]
+}
+
+model ApplicationDocument {
+  id             String   @id @default(uuid())
+  application_id String
+  file_name      String
+  file_path      String
+  mime_type      String
+  file_size      Int
+  created_at     DateTime @default(now())
+
+  application    Application @relation(fields: [application_id], references: [id], onDelete: Cascade)
+}
+
+model StatusHistory {
+  id             String    @id @default(uuid())
+  application_id String
+  status         AppStatus
+  actor_name     String
+  notes          String?
+  created_at     DateTime  @default(now())
+
+  application    Application @relation(fields: [application_id], references: [id], onDelete: Cascade)
+}
+
+model Setting {
+  id         String   @id @default(uuid())
+  village_id String
+  key        String
+  value      String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  village    Village  @relation(fields: [village_id], references: [id], onDelete: Cascade)
+
+  @@unique([village_id, key])
+}
