@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net" modified="2026-10-06T00:00:00.000Z" agent="antigravity" version="24.0.0" type="device">
+  <diagram id="dfd2" name="DFD Level 2 SIADESA">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="DFD Level 2: Dekomposisi Proses Pengajuan Pelayanan (2.0) dan Verifikasi Dokumen (3.0)" style="text;html=1;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="10" width="700" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Section: Proses 2.0 Pengajuan -->
+        <mxCell id="box1" value="Dekomposisi Proses 2.0: Pengajuan Pelayanan" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="520" height="360" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="Warga" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p21" value="2.1&#xa;Validasi Data&#xa;Pemohon" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="80" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p22" value="2.2&#xa;Penyimpanan&#xa;Dokumen" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="80" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p23" value="2.3&#xa;Pemberian&#xa;Nomor Tiket" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="230" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p24" value="2.4&#xa;Pencatatan&#xa;Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="230" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d4a" value="D4  Database Pengajuan" style="shape=partialRectangle;top=0;left=0;right=0;bottom=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="350" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="d5a" value="D5  Penyimpanan Dokumen" style="shape=partialRectangle;top=0;left=0;right=0;bottom=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="350" width="180" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fa1" value="Data pengajuan" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="e1" target="p21" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fa2" value="Data valid" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p21" target="p22" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fa3" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p21" target="p23" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fa4" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p23" target="p24" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fa5" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p24" target="d4a" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fa6" value="File" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p22" target="d5a" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fa7" value="Nomor tiket" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p23" target="e1" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Section: Proses 3.0 Verifikasi -->
+        <mxCell id="box2" value="Dekomposisi Proses 3.0: Verifikasi Dokumen" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="50" width="520" height="360" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e2" value="Admin Desa" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="990" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p31" value="3.1&#xa;Pemeriksaan&#xa;Kelengkapan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p32" value="3.2&#xa;Validasi&#xa;Data Pemohon" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="80" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p33" value="3.3&#xa;Penentuan Status&#xa;Verifikasi" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="230" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p34" value="3.4&#xa;Pencatatan&#xa;Riwayat Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="230" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d4b" value="D4  Database Pengajuan" style="shape=partialRectangle;top=0;left=0;right=0;bottom=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="350" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="D6  Riwayat Status" style="shape=partialRectangle;top=0;left=0;right=0;bottom=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="350" width="180" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fb1" value="Daftar pengajuan" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p31" target="e2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fb2" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p31" target="p32" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fb3" value="Keputusan" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="e2" target="p33" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fb4" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p33" target="p34" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fb5" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p33" target="d4b" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="fb6" value="" style="endArrow=classic;html=1;fontSize=9;" edge="1" source="p34" target="d6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

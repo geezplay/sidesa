@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" modified="2026-10-06T00:00:00.000Z" agent="antigravity" version="24.0.0" type="device">
+  <diagram id="classdiagram" name="Class Diagram SIADESA">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Enum: Role -->
+        <mxCell id="enum1" value="&lt;&lt;enumeration&gt;&gt;&#xa;Role&#xa;─────────────&#xa;WARGA&#xa;ADMIN&#xa;KADES" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="140" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Enum: AppStatus -->
+        <mxCell id="enum2" value="&lt;&lt;enumeration&gt;&gt;&#xa;AppStatus&#xa;─────────────────&#xa;DRAFT&#xa;DIAJUKAN&#xa;PERLU_PERBAIKAN&#xa;MENUNGGU_PERSETUJUAN&#xa;DISETUJUI&#xa;DIPROSES&#xa;SELESAI&#xa;DITOLAK&#xa;DIBATALKAN" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="30" y="170" width="180" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Class: Village -->
+        <mxCell id="c1" value="Village&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ code: String (Unique)&#xa;+ name: String&#xa;+ district: String&#xa;+ regency: String&#xa;+ province: String&#xa;+ address: String?&#xa;+ phone: String?&#xa;+ email: String?&#xa;+ official_head_name: String?&#xa;+ official_head_nip: String?&#xa;+ service_hours: String?&#xa;+ created_at: DateTime&#xa;+ updated_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="30" width="210" height="280" as="geometry" />
+        </mxCell>
+
+        <!-- Class: User -->
+        <mxCell id="c2" value="User&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ village_id: Int (FK)&#xa;+ nik: String (Unique)&#xa;+ name: String&#xa;+ email: String (Unique)&#xa;+ phone: String?&#xa;+ password_hash: String&#xa;+ role: Role&#xa;+ is_active: Boolean&#xa;+ created_at: DateTime&#xa;+ updated_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="30" width="210" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- Class: Resident -->
+        <mxCell id="c3" value="Resident&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ village_id: Int (FK)&#xa;+ user_id: Int? (FK)&#xa;+ nik: String (Unique)&#xa;+ family_card_no: String?&#xa;+ full_name: String&#xa;+ birth_place: String?&#xa;+ birth_date: DateTime?&#xa;+ gender: String?&#xa;+ address: String?&#xa;+ rt: String?&#xa;+ rw: String?&#xa;+ religion: String?&#xa;+ marital_status: String?&#xa;+ occupation: String?&#xa;+ phone: String?&#xa;+ is_verified: Boolean&#xa;+ created_at: DateTime&#xa;+ updated_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="30" width="210" height="360" as="geometry" />
+        </mxCell>
+
+        <!-- Class: Service -->
+        <mxCell id="c4" value="Service&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ village_id: Int (FK)&#xa;+ code: String&#xa;+ name: String&#xa;+ category: String?&#xa;+ description: String?&#xa;+ estimation_days: Int?&#xa;+ requires_approval: Boolean&#xa;+ is_active: Boolean&#xa;+ created_at: DateTime&#xa;+ updated_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="30" width="210" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- Class: ServiceRequirement -->
+        <mxCell id="c5" value="ServiceRequirement&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ service_id: Int (FK)&#xa;+ name: String&#xa;+ is_mandatory: Boolean&#xa;+ created_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="30" width="200" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Class: Application -->
+        <mxCell id="c6" value="Application&#xa;───────────────────────&#xa;+ id: Int (PK)&#xa;+ village_id: Int (FK)&#xa;+ user_id: Int (FK)&#xa;+ resident_id: Int (FK)&#xa;+ service_id: Int (FK)&#xa;+ tracking_number: String (Unique)&#xa;+ purpose: String?&#xa;+ business_name: String?&#xa;+ business_type: String?&#xa;+ business_address: String?&#xa;+ status: AppStatus&#xa;+ verifier_notes: String?&#xa;+ approval_notes: String?&#xa;+ letter_number: String?&#xa;+ qr_uuid: String? (Unique)&#xa;+ created_at: DateTime&#xa;+ updated_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="450" width="250" height="350" as="geometry" />
+        </mxCell>
+
+        <!-- Class: ApplicationDocument -->
+        <mxCell id="c7" value="ApplicationDocument&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ application_id: Int (FK)&#xa;+ file_name: String&#xa;+ file_path: String&#xa;+ mime_type: String?&#xa;+ file_size: Int?&#xa;+ created_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="500" width="210" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Class: StatusHistory -->
+        <mxCell id="c8" value="StatusHistory&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ application_id: Int (FK)&#xa;+ status: AppStatus&#xa;+ actor_name: String&#xa;+ notes: String?&#xa;+ created_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="710" width="210" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Class: Setting -->
+        <mxCell id="c9" value="Setting&#xa;───────────────────&#xa;+ id: Int (PK)&#xa;+ village_id: Int (FK)&#xa;+ key: String&#xa;+ value: String?&#xa;+ created_at: DateTime&#xa;+ updated_at: DateTime" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="500" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <!-- Village 1:N User -->
+        <mxCell id="r1" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c1" target="c2" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Village 1:N Resident -->
+        <mxCell id="r2" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c1" target="c3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Village 1:N Service -->
+        <mxCell id="r3" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c1" target="c4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- User 1:1 Resident (optional) -->
+        <mxCell id="r4" value="1       0..1" style="endArrow=none;html=1;fontSize=9;dashed=1;" edge="1" source="c2" target="c3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Service 1:N ServiceRequirement -->
+        <mxCell id="r5" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c4" target="c5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- User 1:N Application -->
+        <mxCell id="r6" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c2" target="c6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Service 1:N Application -->
+        <mxCell id="r7" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c4" target="c6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Application 1:N Document -->
+        <mxCell id="r8" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c6" target="c7" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Application 1:N StatusHistory -->
+        <mxCell id="r9" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c6" target="c8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Village 1:N Setting -->
+        <mxCell id="r10" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c1" target="c9" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Village 1:N Application -->
+        <mxCell id="r11" value="1       *" style="endArrow=none;html=1;fontSize=9;" edge="1" source="c1" target="c6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

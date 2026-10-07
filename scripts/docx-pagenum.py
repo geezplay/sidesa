@@ -106,15 +106,16 @@ def needle_of(entry_text):
 def render_pdf(docx):
     tmp = tempfile.mkdtemp(prefix="lo_pagenum_")
     profile = os.path.join(tmp, "profile")
+    profile_url = "file:///" + profile.replace("\\", "/")
     subprocess.run(
         [
             "soffice", "--headless", "--norestore",
-            "-env:UserInstallation=file://" + profile,
+            "-env:UserInstallation=" + profile_url,
             "--convert-to", "pdf", "--outdir", tmp, docx,
         ],
         check=True,
         capture_output=True,
-        timeout=45,
+        timeout=180,
     )
     base = os.path.basename(docx).rsplit(".", 1)[0] + ".pdf"
     return os.path.join(tmp, base)

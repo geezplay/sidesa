@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net" modified="2026-10-06T00:00:00.000Z" agent="antigravity" version="24.0.0" type="device">
+  <diagram id="erd" name="Entity Relationship Diagram SIADESA">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Entity: Village -->
+        <mxCell id="v" value="villages&#xa;──────────────&#xa;PK id: INT&#xa;code: VARCHAR (UQ)&#xa;name: VARCHAR&#xa;district: VARCHAR&#xa;regency: VARCHAR&#xa;province: VARCHAR&#xa;address: TEXT&#xa;phone: VARCHAR&#xa;email: VARCHAR&#xa;official_head_name: VARCHAR&#xa;official_head_nip: VARCHAR&#xa;service_hours: VARCHAR&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="200" height="290" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Users -->
+        <mxCell id="u" value="users&#xa;──────────────&#xa;PK id: INT&#xa;FK village_id: INT&#xa;nik: VARCHAR (UQ)&#xa;name: VARCHAR&#xa;email: VARCHAR (UQ)&#xa;phone: VARCHAR&#xa;password_hash: VARCHAR&#xa;role: ENUM(Role)&#xa;is_active: BOOLEAN&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="30" width="200" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Residents -->
+        <mxCell id="r" value="residents&#xa;──────────────&#xa;PK id: INT&#xa;FK village_id: INT&#xa;FK user_id: INT (nullable)&#xa;nik: VARCHAR (UQ)&#xa;family_card_no: VARCHAR&#xa;full_name: VARCHAR&#xa;birth_place: VARCHAR&#xa;birth_date: DATE&#xa;gender: VARCHAR&#xa;address: TEXT&#xa;rt: VARCHAR&#xa;rw: VARCHAR&#xa;religion: VARCHAR&#xa;marital_status: VARCHAR&#xa;occupation: VARCHAR&#xa;phone: VARCHAR&#xa;is_verified: BOOLEAN&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="30" width="210" height="370" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Services -->
+        <mxCell id="s" value="services&#xa;──────────────&#xa;PK id: INT&#xa;FK village_id: INT&#xa;code: VARCHAR&#xa;name: VARCHAR&#xa;category: VARCHAR&#xa;description: TEXT&#xa;estimation_days: INT&#xa;requires_approval: BOOLEAN&#xa;is_active: BOOLEAN&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="30" width="200" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Service Requirements -->
+        <mxCell id="sr" value="service_requirements&#xa;──────────────&#xa;PK id: INT&#xa;FK service_id: INT&#xa;name: VARCHAR&#xa;is_mandatory: BOOLEAN&#xa;created_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="30" width="200" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Applications -->
+        <mxCell id="a" value="applications&#xa;──────────────────&#xa;PK id: INT&#xa;FK village_id: INT&#xa;FK user_id: INT&#xa;FK resident_id: INT&#xa;FK service_id: INT&#xa;tracking_number: VARCHAR (UQ)&#xa;purpose: TEXT&#xa;business_name: VARCHAR&#xa;business_type: VARCHAR&#xa;business_address: TEXT&#xa;status: ENUM(AppStatus)&#xa;verifier_notes: TEXT&#xa;approval_notes: TEXT&#xa;letter_number: VARCHAR&#xa;qr_uuid: VARCHAR (UQ)&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="430" width="230" height="340" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Application Documents -->
+        <mxCell id="ad" value="application_documents&#xa;──────────────&#xa;PK id: INT&#xa;FK application_id: INT&#xa;file_name: VARCHAR&#xa;file_path: VARCHAR&#xa;mime_type: VARCHAR&#xa;file_size: INT&#xa;created_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="480" width="210" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Status History -->
+        <mxCell id="sh" value="status_histories&#xa;──────────────&#xa;PK id: INT&#xa;FK application_id: INT&#xa;status: ENUM(AppStatus)&#xa;actor_name: VARCHAR&#xa;notes: TEXT&#xa;created_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="690" width="210" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Entity: Settings -->
+        <mxCell id="st" value="settings&#xa;──────────────&#xa;PK id: INT&#xa;FK village_id: INT&#xa;key: VARCHAR&#xa;value: TEXT&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP" style="shape=rect;rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="910" y="480" width="190" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships with crow's foot notation -->
+        <!-- Village 1:N Users -->
+        <mxCell id="rel1" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;exitX=1;exitY=0.15;entryX=0;entryY=0.15;" edge="1" source="v" target="u" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Village 1:N Residents -->
+        <mxCell id="rel2" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="v" target="r" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Village 1:N Services -->
+        <mxCell id="rel3" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="v" target="s" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Village 1:N Applications -->
+        <mxCell id="rel4" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="v" target="a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Village 1:N Settings -->
+        <mxCell id="rel5" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="v" target="st" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- User 1:0..1 Resident -->
+        <mxCell id="rel6" value="" style="endArrow=ERzeroToOne;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;dashed=1;" edge="1" source="u" target="r" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- User 1:N Applications -->
+        <mxCell id="rel7" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="u" target="a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Service 1:N Requirements -->
+        <mxCell id="rel8" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="s" target="sr" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Service 1:N Applications -->
+        <mxCell id="rel9" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="s" target="a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Application 1:N Documents -->
+        <mxCell id="rel10" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="a" target="ad" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Application 1:N StatusHistory -->
+        <mxCell id="rel11" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="a" target="sh" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Resident 1:N Applications -->
+        <mxCell id="rel12" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;html=1;fontSize=9;" edge="1" source="r" target="a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

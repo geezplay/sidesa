@@ -1,17 +1,17 @@
 # KATA PENGANTAR {-}
 
-Puji syukur kehadirat Tuhan Yang Maha Esa atas segala rahmat dan karunia-Nya sehingga laporan yang berjudul **"Otomatisasi Pembuatan Dokumen Laporan Akademik menggunakan Pandoc, Typst, dan Markdown"** dapat diselesaikan dengan baik.
+Puji syukur kehadirat Tuhan Yang Maha Esa atas segala rahmat dan karunia-Nya sehingga laporan yang berjudul **"Rancang Bangun Sistem Informasi Pelayanan Administrasi Desa/Kelurahan Berbasis Web (SIADESA)"** dapat diselesaikan dengan baik.
 
-Laporan ini disusun sebagai dokumentasi pipeline otomatisasi dokumen akademik yang dibangun menggunakan kombinasi teknologi Markdown, Pandoc, Typst, ImageMagick, dan Bash. Pipeline ini memungkinkan penulisan konten laporan dalam format Markdown yang sederhana, yang kemudian dikonversi menjadi PDF dengan format profesional melalui Pandoc dan Typst.
+Laporan ini disusun sebagai salah satu syarat pemenuhan tugas mata kuliah Implementasi Perangkat Lunak. Sistem SIADESA dikembangkan untuk mendigitalisasi proses pelayanan administrasi desa/kelurahan, mulai dari pengajuan surat oleh masyarakat, verifikasi oleh perangkat desa, persetujuan oleh kepala desa, hingga penerbitan dokumen resmi dengan validasi QR Code.
 
-Penulis menyadari bahwa laporan ini tidak dapat terselesaikan tanpa bantuan dari berbagai pihak. Oleh karena itu, penulis mengucapkan terima kasih kepada semua pihak yang telah memberikan dukungan dalam penyelesaian laporan ini.
+Penulis menyadari bahwa laporan ini tidak dapat terselesaikan tanpa bantuan dari berbagai pihak. Oleh karena itu, penulis mengucapkan terima kasih kepada dosen pengampu mata kuliah Implementasi Perangkat Lunak serta semua pihak yang telah memberikan dukungan dalam penyelesaian laporan ini.
 
-Penulis menyadari bahwa laporan ini masih jauh dari sempurna. Oleh karena itu, kritik dan saran yang membangun sangat diharapkan untuk perbaikan di masa mendatang. Semoga laporan ini dapat memberikan manfaat bagi pembaca dalam memahami konsep otomatisasi dokumen akademik.
+Penulis menyadari bahwa laporan ini masih jauh dari sempurna. Oleh karena itu, kritik dan saran yang membangun sangat diharapkan untuk perbaikan di masa mendatang. Semoga laporan ini dapat memberikan manfaat bagi pembaca.
 
 ```{=typst}
 #v(0.8cm)
 #align(right)[
-  Agustus 2026
+  Oktober 2026
 
   #v(1cm)
   Tim Penyusun
@@ -49,6 +49,6 @@ Penulis menyadari bahwa laporan ini masih jauh dari sempurna. Oleh karena itu, k
 ```
 
 ```{=openxml}
-<w:p><w:pPr><w:jc w:val="right"/><w:spacing w:before="454"/></w:pPr><w:r><w:t>Agustus 2026</w:t></w:r></w:p>
+<w:p><w:pPr><w:jc w:val="right"/><w:spacing w:before="454"/></w:pPr><w:r><w:t>Oktober 2026</w:t></w:r></w:p>
 <w:p><w:pPr><w:jc w:val="right"/><w:spacing w:before="567"/></w:pPr><w:r><w:t>Tim Penyusun</w:t></w:r></w:p>
 ```

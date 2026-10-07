@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net" modified="2026-10-06T00:00:00.000Z" agent="antigravity" version="24.0.0" type="device">
+  <diagram id="architecture" name="Arsitektur Sistem SIADESA">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Arsitektur Sistem SIADESA" style="text;html=1;fontSize=16;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Client Layer -->
+        <mxCell id="client_box" value="CLIENT LAYER" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="Web Browser&#xa;(Chrome / Safari / Firefox)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="alpine" value="Alpine.js 3.x&#xa;(Client-Side Reactivity)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="115" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tailwind" value="Tailwind CSS 4.x&#xa;(Styling)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="185" y="130" width="115" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="apijs" value="api.js (fetch) + store.js (SiadesaStore)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="240" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Reverse Proxy -->
+        <mxCell id="nginx_box" value="REVERSE PROXY" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="400" y="50" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nginx" value="Nginx + Let's Encrypt SSL" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="80" width="240" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Frontend Server -->
+        <mxCell id="fe_box" value="FRONTEND SERVER" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="400" y="170" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="laravel" value="Laravel 12.x (PHP 8.2)&#xa;sidesa.geezplay.site" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="200" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="blade" value="Blade Templates&#xa;(View Engine Only)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="250" width="115" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vite" value="Vite 7.x&#xa;(Build Tool)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="555" y="250" width="115" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phpfpm" value="PHP-FPM" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="300" width="240" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Backend API Server -->
+        <mxCell id="be_box" value="BACKEND API SERVER" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="400" y="370" width="300" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="express" value="Express.js 4.x (Node.js 22.x)&#xa;api.sidesa.geezplay.site:5000" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="400" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mid1" value="JWT Auth" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="430" y="450" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mid2" value="Helmet" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="513" y="450" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mid3" value="CORS" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="596" y="450" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mid4" value="Rate Limit" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="430" y="488" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mid5" value="Multer" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="513" y="488" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mid6" value="bcryptjs" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="596" y="488" width="75" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="prisma" value="Prisma ORM 6.x" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="530" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pm2" value="PM2 Process Manager" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="568" width="240" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Database Layer -->
+        <mxCell id="db_box" value="DATA LAYER" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="400" y="640" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pgsql" value="PostgreSQL 16" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="670" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="Private File&#xa;Storage&#xa;(storage/uploads/)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="570" y="670" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="ar1" value="HTTPS" style="endArrow=classic;endFill=1;html=1;fontSize=10;fontStyle=1;strokeWidth=2;" edge="1" source="client_box" target="nginx_box" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ar2" value="Port 80/443" style="endArrow=classic;endFill=1;html=1;fontSize=9;strokeWidth=2;" edge="1" source="nginx_box" target="fe_box" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ar3" value="REST API&#xa;fetch()" style="endArrow=classic;endFill=1;html=1;fontSize=9;strokeWidth=2;exitX=0.5;exitY=1;" edge="1" source="client_box" target="be_box" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ar4" value="Port 5000" style="endArrow=classic;endFill=1;html=1;fontSize=9;strokeWidth=2;" edge="1" source="nginx_box" target="be_box" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ar5" value="SQL Queries" style="endArrow=classic;endFill=1;html=1;fontSize=9;strokeWidth=2;" edge="1" source="be_box" target="db_box" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

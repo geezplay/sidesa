@@ -1,0 +1,117 @@
+<mxfile host="app.diagrams.net" modified="2026-10-06T00:00:00.000Z" agent="antigravity" version="24.0.0" type="device">
+  <diagram id="activity" name="Activity Diagram Pengajuan Pelayanan">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Activity Diagram: Alur Pengajuan Pelayanan SIADESA" style="text;html=1;fontSize=16;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Swimlanes -->
+        <mxCell id="sw1" value="Warga/Masyarakat" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="260" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="sw2" value="Admin Desa" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="260" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="sw3" value="Kepala Desa" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="50" width="260" height="750" as="geometry" />
+        </mxCell>
+        <mxCell id="sw4" value="Sistem" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="50" width="260" height="750" as="geometry" />
+        </mxCell>
+
+        <!-- Start -->
+        <mxCell id="start" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="sw1">
+          <mxGeometry x="115" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Warga activities -->
+        <mxCell id="w1" value="Login ke Sistem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sw1">
+          <mxGeometry x="40" y="90" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="w2" value="Memilih Jenis&#xa;Layanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sw1">
+          <mxGeometry x="40" y="150" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="w3" value="Mengisi Formulir&#xa;Pengajuan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sw1">
+          <mxGeometry x="40" y="210" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="w4" value="Mengunggah&#xa;Dokumen Persyaratan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sw1">
+          <mxGeometry x="40" y="270" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="w5" value="Mengirim Pengajuan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sw1">
+          <mxGeometry x="40" y="330" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="w6" value="Memperbaiki&#xa;Pengajuan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sw1">
+          <mxGeometry x="40" y="530" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Admin activities -->
+        <mxCell id="ad1" value="Memeriksa&#xa;Pengajuan Baru" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw2">
+          <mxGeometry x="40" y="380" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ad2" value="Memverifikasi&#xa;Kelengkapan Dokumen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw2">
+          <mxGeometry x="40" y="440" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Verifikasi -->
+        <mxCell id="d1" value="Hasil&#xa;Verifikasi?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="sw2">
+          <mxGeometry x="60" y="500" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Kades activities -->
+        <mxCell id="kd1" value="Mereview Pengajuan&#xa;Terverifikasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sw3">
+          <mxGeometry x="40" y="500" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="Keputusan?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sw3">
+          <mxGeometry x="60" y="570" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- System activities -->
+        <mxCell id="s1" value="Generate Nomor Tiket&#xa;ADM-XXXXXX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw4">
+          <mxGeometry x="40" y="330" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="Status: DIAJUKAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw4">
+          <mxGeometry x="40" y="390" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="Status: MENUNGGU&#xa;PERSETUJUAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw4">
+          <mxGeometry x="40" y="500" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="Generate Nomor Surat&#xa;&amp; QR UUID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw4">
+          <mxGeometry x="40" y="600" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="Status: SELESAI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sw4">
+          <mxGeometry x="40" y="660" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- End -->
+        <mxCell id="end" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;strokeWidth=3;" vertex="1" parent="sw4">
+          <mxGeometry x="115" y="720" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Rejected / Revision labels -->
+        <mxCell id="rej" value="Status: DITOLAK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="sw2">
+          <mxGeometry x="40" y="620" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rev" value="Status:&#xa;PERLU PERBAIKAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="sw2">
+          <mxGeometry x="40" y="680" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rej2" value="Status: DITOLAK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="sw3">
+          <mxGeometry x="40" y="680" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Flow arrows within swimlanes -->
+        <mxCell id="f1" edge="1" source="start" target="w1" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f2" edge="1" source="w1" target="w2" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f3" edge="1" source="w2" target="w3" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" edge="1" source="w3" target="w4" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f5" edge="1" source="w4" target="w5" parent="sw1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

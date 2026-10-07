@@ -2,59 +2,60 @@
 
 ## Latar Belakang
 
-Penulisan laporan akademik merupakan kegiatan fundamental dalam ekosistem pendidikan tinggi dan penelitian. Mahasiswa, dosen, dan peneliti secara berkala menyusun dokumen formal seperti laporan praktikum, laporan proyek rekayasa perangkat lunak, tugas akhir, skripsi, tesis, hingga makalah ilmiah [@apa2020manual]. Standarisasi laporan akademik menuntut tingkat konsistensi visual yang ketat, meliputi pengaturan geometri halaman (margin), tipografi, spasi baris, penomoran berjenjang, penataan tabel dan gambar, hingga keakuratan sitasi daftar pustaka.
+Pelayanan administrasi desa/kelurahan merupakan salah satu fungsi pemerintahan yang bersentuhan langsung dengan kehidupan masyarakat sehari-hari. Masyarakat memerlukan berbagai dokumen resmi seperti Surat Keterangan Usaha, Surat Keterangan Domisili, Surat Keterangan Tidak Mampu, Surat Pengantar SKCK, hingga Surat Keterangan Kelahiran dan Kematian untuk berbagai keperluan administratif.
 
-Metode konvensional dalam penyusunan laporan akademik di Indonesia umumnya masih mengandalkan pengolah kata berbasis Graphical User Interface (GUI) seperti Microsoft Word. Meskipun populer dan mudah diakses, pendekatan ini memiliki sejumlah tantangan teknis:
+Pada banyak wilayah di Indonesia, proses pelayanan administrasi desa masih dilakukan secara manual. Masyarakat harus datang ke kantor desa, membawa dokumen persyaratan secara fisik, mengisi formulir di tempat, kemudian menunggu proses verifikasi dan penerbitan dokumen tanpa kepastian waktu penyelesaian. Pendekatan konvensional tersebut menimbulkan sejumlah permasalahan:
 
-1. **Inkonsistensi Pemformatan dan Pergeseran Tata Letak** --- Penataan gaya (styles), margin, dan spasi yang dilakukan secara manual sering kali menghasilkan dokumen yang tidak seragam. Perubahan kecil pada paragraf awal kerap mengakibatkan pergeseran posisi gambar dan tabel pada halaman-halaman berikutnya (*layout drift*).
+1. **Antrean pelayanan yang panjang** --- Masyarakat harus meluangkan waktu untuk datang dan menunggu di kantor desa, terutama pada jam-jam sibuk pelayanan.
 
-2. **Kompleksitas Penomoran Ganda** --- Pedoman penulisan karya ilmiah di perguruan tinggi Indonesia mewajibkan struktur penomoran halaman ganda (*dual pagination*), yaitu angka Romawi kecil (*i, ii, iii*) untuk bagian pengantar (*front matter*) dan angka Arab (*1, 2, 3*) yang dimulai ulang (*restart*) dari angka 1 pada BAB I (*main body*). Pengaturan *section break* manual pada pengolah kata konvensional sering membingungkan dan rentan rusak saat dokumen disunting berulang kali [@iso2021openxml].
+2. **Proses pengajuan yang memakan waktu** --- Ketiadaan sistem terpadu menyebabkan proses verifikasi dokumen, pengecekan kelengkapan persyaratan, dan persetujuan pimpinan berlangsung tidak efisien.
 
-3. **Ketiadaan Dukungan Version Control yang Efektif** --- Berkas dokumen biner atau XML terkompresi tidak dapat di-*diff* dan di-*merge* secara bersih menggunakan sistem kontrol versi seperti Git. Hal ini menyulitkan pelacakan riwayat revisi dan kolaborasi tim secara terdistribusi.
+3. **Kesulitan pelacakan status pengajuan** --- Masyarakat tidak memiliki mekanisme untuk mengetahui progres pengajuan secara mandiri, sehingga harus berulang kali menghubungi atau mendatangi kantor desa untuk menanyakan status permohonan.
 
-4. **Ketergantungan dan Bobot Sistem Typesetting Tradisional** --- Penggunaan sistem typesetting klasik seperti LaTeX [@lamport1994latex; @knuth1984texbook] memberikan kualitas tipografi tinggi, namun memiliki kurva belajar yang curam serta ukuran instalasi distribusi TeX Live yang sangat besar (mencapai 4--5 GB) sehingga lambat dalam lingkungan CI/CD container.
+4. **Pengelolaan arsip berbasis dokumen fisik** --- Pencatatan pelayanan dan penyimpanan arsip masih mengandalkan berkas kertas yang rentan rusak, hilang, dan sulit ditelusuri kembali.
 
-Untuk mengatasi permasalahan tersebut, paradigma pemisahan konten dari penyajian (*separation of concerns*) diimplementasikan melalui pipeline otomatisasi dokumen modern. Konten ditulis menggunakan format teks ringan **Markdown** [@gruber2004markdown; @commonmark2021], kemudian dikonversi secara terpadu oleh **Pandoc** [@pandoc2024] ke dalam dua engine keluaran:
+5. **Risiko kesalahan input data** --- Pengisian data secara manual berulang pada setiap pengajuan meningkatkan potensi inkonsistensi dan kesalahan pencatatan data penduduk.
 
-1. **Typst Engine** [@typst2024] sebagai sistem typesetting mutakhir yang cepat dan ringan untuk menghasilkan dokumen PDF berkualitas percetakan.
-2. **Multi-Pass DOCX Engine** dengan filter Lua kustom [@krewinkel2020pandoc] untuk menghasilkan dokumen Microsoft Word resmi yang memenuhi aturan penomoran halaman akademik.
+6. **Keterbatasan pelaporan** --- Pimpinan desa kesulitan memperoleh rekapitulasi dan statistik pelayanan secara cepat karena data tersebar dalam format non-digital.
 
-Pipeline ini diorkestrasi secara otomatis melalui antarmuka CLI terpadu dan skrip otomatisasi Bash [@gnu2024bash], serta didukung oleh lingkungan terisolasi yang dapat direproduksi (*reproducible*) menggunakan Nix Flakes [@dolstra2004nix] dan Docker [@merkel2014docker].
+Berdasarkan permasalahan tersebut, diperlukan sebuah sistem informasi berbasis web yang mampu mendigitalisasi seluruh proses pelayanan administrasi desa/kelurahan secara end-to-end, mulai dari pengajuan oleh masyarakat, verifikasi oleh petugas, persetujuan oleh kepala desa, hingga penerbitan dokumen resmi.
 
-## Rumusan Masalah
+## Tujuan Sistem
 
-Berdasarkan latar belakang di atas, rumusan masalah dalam penelitian dan pengembangan pipeline ini adalah:
+Tujuan pengembangan sistem SIADESA (Sistem Informasi Administrasi Desa/Kelurahan) adalah sebagai berikut:
 
-1. Bagaimana merancang arsitektur pipeline otomatisasi konversi dokumen akademik dari format Markdown menjadi PDF dan Microsoft Word (DOCX)?
-2. Bagaimana mengintegrasikan engine typesetting Typst dan filter Pandoc Lua untuk menghasilkan format laporan yang mematuhi standar penomoran akademik Indonesia?
-3. Bagaimana mekanisme penanganan penomoran halaman ganda (Romawi kecil pada *front matter* dan Arab pada isi bab) secara otomatis pada berkas DOCX dan PDF?
-4. Bagaimana merancang sistem preset deklaratif yang fleksibel untuk memfasilitasi keberagaman aturan format di berbagai perguruan tinggi?
-5. Bagaimana membangun lingkungan pengembangan dan build yang sepenuhnya terisolasi dan *reproducible* menggunakan Nix Flakes dan Docker container?
+1. Membangun sistem pelayanan administrasi desa/kelurahan berbasis web yang mudah digunakan oleh masyarakat maupun perangkat desa.
+2. Mempercepat proses pengajuan dan penerbitan dokumen administrasi melalui alur kerja digital yang terstruktur.
+3. Menyediakan mekanisme pelacakan status pengajuan secara *real-time* bagi masyarakat melalui nomor tiket pengajuan.
+4. Mengimplementasikan sistem verifikasi dokumen bertingkat dengan peran Admin Desa sebagai verifikator dan Kepala Desa sebagai pemberi persetujuan.
+5. Menyediakan fitur penerbitan dokumen resmi dengan nomor surat otomatis dan validasi keaslian melalui QR Code.
+6. Mengelola data penduduk secara terstruktur dalam basis data digital yang mendukung pencarian dan impor data massal.
+7. Menyediakan dashboard statistik pelayanan bagi perangkat desa untuk mendukung pengambilan keputusan.
+8. Meningkatkan transparansi pelayanan publik melalui halaman informasi layanan yang dapat diakses tanpa autentikasi.
+9. Menjamin keamanan data pribadi masyarakat sesuai dengan ketentuan Undang-Undang Pelindungan Data Pribadi (UU PDP) Nomor 27 Tahun 2022 [@uupdb2022].
 
-## Tujuan
+## Ruang Lingkup
 
-Tujuan dari penyusunan laporan dan pengembangan sistem ini adalah:
+Ruang lingkup pengembangan sistem SIADESA pada versi MVP (*Minimum Viable Product*) Phase 1 mencakup:
 
-1. Menganalisis dan mengimplementasikan pipeline otomatisasi dokumen berbasis teks menggunakan Markdown, Pandoc, Typst, dan Lua Filters.
-2. Membangun template visual Typst (`template.typ`) dan template gaya Word (`reference.docx`) yang mematuhi standar tipografi akademik Indonesia (A4, margin standar/skripsi, Times New Roman/Libertinus Serif, spasi 1.5).
-3. Mengembangkan sistem injeksi OpenXML dan skrip dua tahap (*two-pass page numbering*) untuk menyinkronkan penomoran halaman aktual pada Daftar Isi dokumen DOCX.
-4. Mengembangkan sistem preset format kampus deklaratif (`presets/*.yml`) beserta modul linter dan pemindai otomatis (*PDF Guideline Scanner*).
-5. Mengintegrasikan test suite otomatis berorientasi assertions untuk memverifikasi keandalan struktur dan konten dokumen yang dihasilkan.
+1. **Modul Autentikasi** --- Registrasi akun masyarakat berbasis NIK, login menggunakan NIK atau email, manajemen sesi berbasis JWT (*JSON Web Token*), dan pembatasan akses berdasarkan peran (*Role-Based Access Control*).
 
-## Manfaat
+2. **Modul Data Penduduk** --- Pengelolaan data kependudukan (NIK, nama, alamat, tempat/tanggal lahir, dan data demografis lainnya) dengan fitur pencarian, penambahan manual, dan impor data massal dari berkas Excel.
 
-Manfaat yang diharapkan dari proyek dan laporan ini meliputi:
+3. **Modul Pelayanan Administrasi** --- Konfigurasi jenis layanan, persyaratan dokumen, dan estimasi waktu penyelesaian oleh Admin Desa.
 
-1. **Efisiensi Waktu dan Produktivitas** --- Penulis dan mahasiswa dapat berfokus penuh pada substansi konten tanpa terbebani oleh pengaturan tata letak manual yang berulang.
-2. **Standardisasi dan Kualitas Dokumen** --- Menghasilkan keluaran dokumen PDF dan DOCX yang konsisten, rapi, dan mematuhi kaidah penulisan ilmiah serta gaya sitasi APA Edisi ke-7 [@apa2020manual].
-3. **Kemudahan Kolaborasi dan Version Control** --- Memungkinkan pelacakan perubahan baris per baris (*line-by-line diff*) pada repositori Git.
-4. **Portabilitas Tinggi** --- Dokumentasi dapat dibangun secara instan di berbagai sistem operasi (Linux, macOS, Windows) dengan dependensi ringan.
+4. **Modul Pengajuan Online** --- Pengajuan pelayanan oleh masyarakat yang dilengkapi formulir digital, unggah dokumen persyaratan, dan pemberian nomor tiket otomatis.
 
-## Batasan Masalah
+5. **Modul Verifikasi** --- Pemeriksaan kelengkapan dan keabsahan dokumen pengajuan oleh Admin Desa, dengan opsi menerima, meminta perbaikan, atau menolak pengajuan.
 
-Batasan masalah dalam implementasi sistem ini adalah:
+6. **Modul Persetujuan Kepala Desa** --- Proses *approval* oleh Kepala Desa terhadap pengajuan yang telah lolos verifikasi, disertai penerbitan nomor surat resmi dan kode QR validasi.
 
-1. Format dokumen masukan menggunakan varian Pandoc Markdown dengan metadata berbasis YAML.
-2. Format keluaran utama mencakup dokumen PDF (dikompilasi melalui Typst) dan dokumen Microsoft Word (.docx).
-3. Standar sitasi dan daftar pustaka default mengacu pada Citation Style Language (CSL) APA Style Edisi ke-7.
-4. Pengujian otomatis dijalankan pada lingkungan sistem operasi berbasis Linux dan Nix/Docker container.
+7. **Modul Pelacakan dan Verifikasi Dokumen** --- Pelacakan status pengajuan melalui nomor tiket dan verifikasi keaslian dokumen melalui pemindaian QR Code pada halaman publik.
+
+8. **Modul Dashboard** --- Tampilan ringkasan statistik pelayanan (total penduduk, pengajuan baru, menunggu verifikasi, menunggu persetujuan, dan selesai).
+
+9. **Modul Cetak Surat** --- Pencetakan dokumen surat resmi dengan kop surat, nomor surat, dan QR Code validasi.
+
+10. **Halaman Publik** --- Beranda informasi desa, katalog layanan, dan formulir pelacakan pengajuan yang dapat diakses tanpa login.
+
+Sistem dikembangkan menggunakan arsitektur *decoupled* dengan Laravel sebagai *view engine* (Blade template), Alpine.js sebagai *framework* reaktivitas *client-side*, Express.js sebagai REST API *backend*, dan PostgreSQL sebagai basis data relasional. Deployment dilakukan pada *Virtual Private Server* (VPS) dengan Nginx sebagai *reverse proxy* [@nginx2024docs].
